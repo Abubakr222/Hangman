@@ -1,0 +1,47 @@
+#Hangman
+import random
+words=["man","cryst","hang","flot"]
+random_word=random.choice(words)
+space=[]
+for i in random_word:
+    space.append("_")
+print(space)
+count=7
+letters=[]
+
+while "_"  in space and count!=0:
+  
+    guess=input("please,guess a letter ")
+    for index in range(0,len(random_word)):
+        
+        letter=random_word[index]
+        letters.append(letter)
+        
+
+        if letter==guess:
+            space[index]=guess
+            
+        
+    if guess not in letters:      
+            count-=1  
+
+    print(f"You have {count} more tries.")    
+    print(space)
+if "_" not in space:
+    print("""
+         *******
+         You win
+         ******* 
+      
+      
+      """)
+else:
+    print("you lose")
+    print('''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ / \  |
+      |
+=========''')
